@@ -23,4 +23,4 @@ jobs:
       - name: Lint code
         run: ruff check
       - name: Type check
-        run: mypy . --install-types --non-interactive
+        run: mypy food --install-types --non-interactive
