@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "food"
+version = "0.1.0"
+description = "Food"
+requires-python = ">=3.13"
+dynamic = ["dependencies"]
+
+[project.optional-dependencies]
+check = [
+    "ruff",
+    "black",
+    "mypy",
+]
+
+[tool.setuptools.dynamic]
+dependencies = { file = "requirements.txt" }
+
+[tool.black]
+line-length = 125
+skip-string-normalization = true
+
+[tool.ruff]
+line-length = 125
+
+[tool.ruff.format]
+line-ending = "lf"
+quote-style = "single"

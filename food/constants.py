@@ -1,9 +1,9 @@
-URL = "https://api.hfs.purdue.edu/menus/v3/GraphQL"
+URL = 'https://api.hfs.purdue.edu/menus/v3/GraphQL'
 
 PAYLOAD = {
-    "operationName": "getLocationMenu",
-    "variables": {"date": "2025-11-13"},
-    "query": """
+    'operationName': 'getLocationMenu',
+    'variables': {'date': '2025-11-13'},
+    'query': """
     query getFoodNames($date: Date!) {
       diningCourts {
         formalName\n
@@ -26,6 +26,6 @@ PAYLOAD = {
 }
 
 HEADERS = {
-    "Content-Type": "application/json",
-    "User-Agent": "Mozilla/5.0",
+    'Content-Type': 'application/json',
+    'User-Agent': 'Mozilla/5.0',
 }
