@@ -1,0 +1,25 @@
+{
+    "operationName": "getLocationMenu",
+    "variables": {
+        "date": "2025-11-13"
+    },
+    "query": "query getFoodNames($date: Date!) {
+    diningCourts {
+        formalName\n
+        dailyMenu(date: $date) {
+        meals {
+            name
+            stations {
+            name
+            items {
+                item {
+                name
+                }
+            }
+            }
+        }
+        }
+    }
+    }
+"
+}
