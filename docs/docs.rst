@@ -1,14 +1,15 @@
 Doc Setup
 =========
 
+Build the HTML.
+
 .. code-block:: bash
-    :caption: Build the HTML
 
     make html
 
-Grab the absolute path of the website index to view in browser.
+To view: go to the absolute path of the following.
 
 .. code-block:: text
-    :caption: Relative path of website index
+    :caption: Relative path of website HTML
 
     docs/_build/html/index.html
