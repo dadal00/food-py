@@ -18,9 +18,12 @@ jobs:
 
       - name: Install dependencies
         run: pip install '.[check]'
+
       - name: Check formatting
         run: black --check .
+
       - name: Lint code
         run: ruff check
+
       - name: Type check
         run: mypy food --install-types --non-interactive
