@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Search Engine &#8212; Food  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="User" href="user.html" />
+    <link rel="prev" title="Foods" href="foods.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="search-engine">
+<h1>Search Engine<a class="headerlink" href="#search-engine" title="Link to this heading">¶</a></h1>
+<p>Every request for foods is a proxied request to the search engine.</p>
+<p><em>Also handles sorting, filtering and top n.</em></p>
+<ol class="arabic simple">
+<li><p>Request goes to the backend.</p></li>
+<li><p>Backend forwards request to the search engine.</p></li>
+<li><p>Search engine processes request.</p></li>
+<li><p>Search engine sends a response to the backend.</p></li>
+<li><p>Backend forwards the respones back the user.</p></li>
+</ol>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading">¶</a></h2>
+<p>Why the extra round trip?</p>
+<p>The normal model is to expose the search engine to the public. We
+choose to route the user traffic to our backend first then to the
+search engine and back.</p>
+<p>Given these assumptions:</p>
+<ul class="simple">
+<li><p>We are running the search engine on the same machine as the backend, giving microsecond latency round trip.</p></li>
+<li><p>We are using Protobuf.</p></li>
+<li><p>We are further optimizing the payload using the bitmap scheme.</p></li>
+</ul>
+<p>The extra round trip latency would be in microseconds. The
+bottleneck would be the network round trip to and from the user, the
+reverse proxy, or the processing time in the search engine. But,
+this would be the same if we were to expose the search engine.</p>
+<p>As a result, there are only benefits provided our assumptions
+hold true.</p>
+<p>Benefits:</p>
+<ul class="simple">
+<li><p>Smaller payload to send.</p></li>
+<li><p>Faster decoding using Protobuf + custom scheme.</p></li>
+<li><p>Bottlnecks are the same even if we were to just expose the search engine.</p></li>
+</ul>
+</section>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
+<p>Location: string, today’s location</p>
+<p>Votes: integer, vote count</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Food</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs.html">Doc Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="foods.html">Foods</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Search Engine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#attributes">Attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user.html">User</a></li>
+<li class="toctree-l1"><a class="reference internal" href="votes.html">Votes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">General Utilities</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="foods.html" title="previous chapter">Foods</a></li>
+      <li>Next: <a href="user.html" title="next chapter">User</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, dadal00.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/search_engine.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
