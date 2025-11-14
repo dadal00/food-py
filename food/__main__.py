@@ -14,10 +14,15 @@ if __name__ == '__main__':
     splitByCourt = re.split(r'(?=\"formalName\":)', text)
 
     diningCourts = {}
+    menu = set()
 
     for court in splitByCourt[1:]:
-        diningCourts[re.findall(r'"formalName":\s*"([^"]+)"', court)[0]] = set(
+        courtMenu = set(
             re.findall(r'"item":\s*{\s*"name":\s*"([^"]+)"', court)
         )
+        
+        diningCourts[re.findall(r'"formalName":\s*"([^"]+)"', court)[0]] = courtMenu
+        
+        menu = menu.union(courtMenu)
 
-    print(diningCourts)
+    print(len(menu))

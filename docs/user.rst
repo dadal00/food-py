@@ -1,7 +1,7 @@
-Overview
+User
 ========
 
-User Flow
+Flow
 ---------
 
 - Only once user tries first vote
@@ -10,7 +10,7 @@ User Flow
 - Once verified, user gets a long-lasting cookie
 - If cookie exists, no need to check for or request email again
 
-User Voting
+Voting
 -----------
 
 - Search engine provides voting options

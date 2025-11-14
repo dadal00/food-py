@@ -1,8 +1,8 @@
 Database
---------
+========
 
 Requirements
-~~~~~~~~~~~~
+------------
 
 - Fast lookups
 - Decently small dataset
@@ -10,12 +10,12 @@ Requirements
 - Max 50,000 usernames (max 100 chars), 255 option pairs
 
 Choice
-~~~~~~~~~~~~
+------
 
 - **Redis**, in-memory database
 - Use a **Redis hash** with 1 big key, then store key-values inside
 - For users: string + 255-bit bitmap
-- For foods: 8-bit int + 32-bit int
+- For foods: string + 32-bit VOTES int
 - Supports **atomic operations**
 - Estimated memory usage:
 

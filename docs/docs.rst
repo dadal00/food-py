@@ -7,7 +7,7 @@ Build the HTML.
 
     make html
 
-To view: go to the absolute path of the following.
+To view, go to the absolute path of the following.
 
 .. code-block:: text
     :caption: Relative path of website HTML
