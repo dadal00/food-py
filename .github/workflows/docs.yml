@@ -27,6 +27,8 @@ jobs:
           make html
 
       - name: Deploy to GitHub pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd docs
           ghp-import -n -p -f _build/html
